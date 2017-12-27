@@ -69,28 +69,99 @@ public class Main {
 
     public static void main(String[] args) {
 	    for (int i = 1; i <= 10; i++){
-	        Movie movie = randomMovie();
-            System.out.println("Movie " + i + " : " + movie.getName() + "\n" +
-                    "Plot: " + movie.plot() + "\n");
+	        Car car = randomCar();
+            System.out.println("Car " + i + " : " + car.getName() + "\n" +
+                    "Acceleration: " + car.accelerate() + "\n");
         }
     }
 
-    public static Movie randomMovie(){
-        int randomNumber = (int)(Math.random()*5 +1);
+    public static Car randomCar(){
+        int randomNumber = (int)(Math.random()*3 +1);
         System.out.println("Random number : " + randomNumber);
         switch (randomNumber){
             case 1:
-                return new Jaws();
+                return new Golf();
             case 2:
-                return new IndependenceDay();
+                return new Carrera();
             case 3:
-                return new MazeRunner();
-            case 4:
-                return new StarWars();
-            case 5:
-                return new ForgettableMovie();
+                return new Gallardo();
             default:
                 return null;
         }
+    }
+}
+
+class Car{
+    private String name;
+    private boolean engine;
+    private int cylinders;
+    private int wheels;
+
+    public Car(String name, int cylinders) {
+        this.name = name;
+        this.engine = true;
+        this.cylinders = cylinders;
+        this.wheels = 4;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isEngine() {
+        return engine;
+    }
+
+    public int getCylinders() {
+        return cylinders;
+    }
+
+    public int getWheels() {
+        return wheels;
+    }
+
+    public String startEngine(){
+        return "Car engine started";
+    }
+
+    public String accelerate(){
+        return "Car accelerated";
+    }
+
+    public String brake(){
+        return "Car stopped";
+    }
+}
+
+class Golf extends Car{
+    public Golf() {
+        super("Golf" , 100);
+    }
+
+    @Override
+    public String accelerate() {
+        return "Golf accelerates 10 m/s";
+    }
+}
+
+class Carrera extends Car{
+    public Carrera() {
+        super("Carrera", 250);
+    }
+
+    @Override
+    public String accelerate() {
+        return "Carrera accelerates 15 m/s";
+    }
+}
+
+class Gallardo extends Car{
+    public Gallardo() {
+        super("Gallardo", 400);
+    }
+
+    @Override
+    public String accelerate() {
+        return "Gallardo accelerates 20 m/s";
     }
 }
